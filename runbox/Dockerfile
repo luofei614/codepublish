@@ -16,6 +16,11 @@ RUN sed -i "s/variables_order.*/variables_order = \"EGPCS\"/g" /etc/php5/apache2
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 ADD ./composer.phar   /usr/local/bin/composer
 RUN chmod +x /usr/local/bin/composer 
+
+#rewrite
+RUN sed -i "s/AllowOverride None/AllowOverride All/g" /etc/apache2/sites-available/000-default.conf
+RUN ln -s /etc/apache2/mods-available/rewrite.load /etc/apache2/mods-enabled/rewrite.load
+
 ADD run.sh /run.sh
 RUN chmod 755 /*.sh
 
