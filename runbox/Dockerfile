@@ -18,7 +18,7 @@ ADD ./composer.phar   /usr/local/bin/composer
 RUN chmod +x /usr/local/bin/composer 
 
 #rewrite
-RUN sed -i "s/AllowOverride None/AllowOverride All/g" /etc/apache2/sites-available/000-default.conf
+RUN sed -i "s/AllowOverride None/AllowOverride All/g" /etc/apache2/sites-available/default
 RUN ln -s /etc/apache2/mods-available/rewrite.load /etc/apache2/mods-enabled/rewrite.load
 
 ADD run.sh /run.sh
