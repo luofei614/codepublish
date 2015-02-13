@@ -8,7 +8,7 @@ RUN apt-get update && \
         php5-gd \
         php5-curl \
         php-pear \
-        php5-memcache
+        php5-memcache\
         php-apc && \
     rm -rf /var/lib/apt/lists/*
 RUN sed -i "s/variables_order.*/variables_order = \"EGPCS\"/g" /etc/php5/apache2/php.ini
