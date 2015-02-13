@@ -14,5 +14,5 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/*
 RUN sed -i "s/variables_order.*/variables_order = \"EGPCS\"/g" /etc/php5/apache2/php.ini
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
-RUN composer global require 'phpunit/phpunit=4.5.*'
-RUN ln -s /root/.composer/vendor/bin/phpunit /usr/local/bin/
+ADD ./composer.phar   /usr/local/bin/composer
+RUN chmod +x /usr/local/bin/composer 
