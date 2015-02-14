@@ -7,9 +7,18 @@ phpmyadmin:
    - memcache
   environment:
    - VIRTUAL_HOST=phpmyadmin.i.shequnnet.com
+luofei.test:
+  build: ./runbox
+  volumes:
+   - ./code/luofei.test:/app
+  links:
+   - db
+   - memcache
+  environment:
+   - VIRTUAL_HOST=luofei.test.i.shequnnet.com
 db:
   image: tutum/mariadb
   environment:
-   - MARIADB_PASS=123456 
+   - MARIADB_PASS=sansheng20150214 
 memcache: 
   image: memcached
