@@ -1,0 +1,15 @@
+phpmyadmin:
+  build: ./runbox
+  volumes:
+   - ./phpmyadmin:/app
+  links:
+   - db
+   - memcache
+  environment:
+   - VIRTUAL_HOST=phpmyadmin.i.shequnnet.com
+db:
+  image: tutum/mariadb
+  environment:
+   - MARIADB_PASS=123456 
+memcache: 
+  image: memcached
