@@ -7,10 +7,10 @@ phpmyadmin:
    - memcache
   environment:
    - VIRTUAL_HOST=phpmyadmin.i.shequnnet.com
-luofei.test:
+luofeitest:
   build: ./runbox
   volumes:
-   - ./code/luofei.test:/app
+   - /code/luofei.test:/app
   links:
    - db
    - memcache
