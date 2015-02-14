@@ -6,6 +6,11 @@ db:
    - /database:/var/lib/mysql
 memcache: 
   image: memcached
+socketlog:
+  build: ./socketlog
+  ports:
+     - "1229:1229"
+     - "1116:1116"
 phpmyadmin:
   build: ./runbox
   volumes:
