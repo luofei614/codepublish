@@ -12,10 +12,15 @@ RUN apt-get update && \
         php5-memcache\
         php-apc && \
     rm -rf /var/lib/apt/lists/*
+#安装make
+RUN apt-get remove make && apt-get install -yq make
+#安装php-taint
+RUN pecl install taint
+RUN echo "extension=taint.so" > /etc/php5/conf.d/taint.ini
 RUN sed -i "s/variables_order.*/variables_order = \"EGPCS\"/g" /etc/php5/apache2/php.ini
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
-ADD ./composer.phar   /usr/local/bin/composer
-RUN chmod +x /usr/local/bin/composer 
+#ADD ./composer.phar   /usr/local/bin/composer
+#RUN chmod +x /usr/local/bin/composer 
 
 #rewrite
 RUN sed -i "s/AllowOverride None/AllowOverride All/g" /etc/apache2/sites-available/default
